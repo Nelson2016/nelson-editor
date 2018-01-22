@@ -1,0 +1,60 @@
+@import "constant.scss";
+@import "reset.scss";
+
+/*Overflow ellipsis*/
+@mixin n-ellipsis($num) {
+  @if $num == 1 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  } @else {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: $num;
+    -webkit-box-orient: vertical;
+  }
+}
+
+/*Clearfix*/
+@mixin n-clearfix {
+  zoom: 1;
+  &:after {
+    clear: both;
+    display: block;
+    line-height: 0;
+    content: 'clear';
+    visibility: hidden;
+  }
+  * html & {
+    height: 1px
+  }
+}
+
+/*Top/Bottom line*/
+@mixin n-bottom-line {
+  position: relative;
+  &:after {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    content: "";
+    position: absolute;
+    transform: scaleY(.5);
+    background: $line-color-gray;
+  }
+}
+
+@mixin n-top-line {
+  position: relative;
+  &:after {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    content: "";
+    position: absolute;
+    transform: scaleY(.5);
+    background: $line-color-gray;
+  }
+}

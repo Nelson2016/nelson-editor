@@ -1,0 +1,111 @@
+@import "./constant.scss";
+
+html, body {
+  background: $background-color-white;
+  font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif, "宋体";
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $font-color-black;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 22px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 12px;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  border: none;
+}
+
+p,
+td,
+th,
+li,
+a,
+label,
+span {
+  font-size: $font-size-1;
+  color: $font-color-black;
+}
+
+input,
+button,
+textarea {
+  color: $font-color-black;
+  font-size: $font-size-1;
+  outline: none;
+  box-shadow: none;
+}
+
+input::placeholder, textarea::placeholder {
+  color: $font-color-gray;
+  font-size: $font-size-1;
+}
+
+tbody {
+  outline: none;
+}
+
+input[type=search],
+input[type=text],
+input[type=number],
+input[type=tel],
+input[type=password],
+textarea {
+  appearance: none;
+}

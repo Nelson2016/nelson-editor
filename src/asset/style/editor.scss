@@ -1,0 +1,284 @@
+@import "./constant.scss";
+@import "./common.scss";
+
+$controls-height: 40px;
+$min-height: 300px;
+$n-editor-controls-z-index: 200;
+
+.n-editor {
+
+  border: $line-color-gray 1px solid;
+
+  .n-editor-text-area {
+
+    padding: $margin-padding-2;
+    min-height: $min-height;
+    outline: none;
+
+    h1, h2, h3, h4, h5, h6, p, li, a, li, pre {
+      line-height: 1.5;
+    }
+
+    h1 {
+      font-size: 30px;
+    }
+
+    h2 {
+      font-size: 28px;
+    }
+
+    h3 {
+      font-size: 26px;
+    }
+
+    h4 {
+      font-size: 24px;
+    }
+
+    h5 {
+      font-size: 22px;
+    }
+
+    h6 {
+      font-size: 20px;
+    }
+
+    p, li, a, li {
+      font-size: 14px;
+    }
+
+    blockquote {
+      font-size: $font-size-5;
+      border-left: $color-blue 3px solid;
+      padding: $margin-padding-1 $margin-padding-2;
+      margin: $margin-padding-1 0;
+    }
+
+    ul, ol {
+      padding-left: $margin-padding-6;
+    }
+
+    ul {
+      list-style-type: circle;
+    }
+
+    ol {
+      list-style-type: decimal;
+    }
+
+    a {
+      color: $color-blue;
+    }
+
+    pre {
+      background: $background-color-gray;
+      border-radius: $border-radius-3;
+      padding: $margin-padding-2;
+    }
+
+  }
+
+}
+
+.n-editor-controls {
+
+  .n-editor-controls-container {
+
+    padding: 0 $margin-padding-1;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: $line-color-gray 1px solid;
+
+    li {
+
+      position: relative;
+      line-height: $controls-height;
+      padding: 0 $margin-padding-1;
+
+      button {
+
+        line-height: $controls-height;
+        height: $controls-height;
+        display: inline;
+        border: none;
+        color: $font-color-gray;
+        cursor: pointer;
+        background: none;
+
+        &:hover {
+          color: $font-color-black;
+        }
+
+      }
+
+      &:nth-child(2) {
+
+        button i {
+
+          font-size: $icon-size-3;
+
+        }
+
+      }
+
+    }
+
+    .n-editor-controls-picture, .n-editor-controls-headers, .n-editor-controls-link {
+      z-index: $n-editor-controls-z-index;
+      position: absolute;
+      background: $background-color-white;
+      border: $line-color-gray 1px solid;
+      top: $controls-height + $margin-padding-2 / 2;
+      display: none;
+
+      &.n-active {
+        display: block;
+      }
+
+    }
+
+    .n-editor-controls-headers {
+
+      left: -1 * $margin-padding-2 / 4;
+
+      ul {
+
+        display: flex;
+
+        li {
+
+          padding: 0;
+          text-align: center;
+          width: $controls-height;
+          color: $font-color-gray;
+          font-size: $font-size-3;
+          cursor: pointer;
+
+          &:hover {
+            color: $font-color-black;
+          }
+
+        }
+
+      }
+
+    }
+
+    .n-editor-controls-picture {
+      right: -1 * $margin-padding-2 / 4;
+      padding: 0 $margin-padding-2;
+
+      & > div {
+        display: flex;
+
+        span {
+
+          color: $font-color-gray;
+          flex-shrink: 0;
+          text-align: center;
+
+          &:nth-child(2) {
+            margin: 0 $margin-padding-2;
+          }
+
+          &:last-child {
+            cursor: pointer;
+            color: $color-blue;
+
+            button {
+              border: none;
+              cursor: pointer;
+              color: $color-blue;
+            }
+
+          }
+
+        }
+
+        &.n-editor-controls-picture-local {
+
+          span {
+
+            input {
+
+              display: none;
+
+            }
+
+          }
+
+        }
+
+        &.n-editor-controls-picture-net {
+
+          width: 270px;
+
+          span {
+
+            input {
+
+              padding: $margin-padding-1;
+              border: none;
+              border-bottom: $line-color-gray 1px solid;
+              width: 150px;
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+    .n-editor-controls-link {
+
+      right: -1 * $margin-padding-2 / 4;
+      padding: 0 $margin-padding-2;
+
+      .n-editor-controls-link-container {
+
+        display: flex;
+        width: 270px;
+
+        span {
+
+          color: $font-color-gray;
+          flex-shrink: 0;
+          text-align: center;
+
+          &:nth-child(2) {
+            margin: 0 $margin-padding-2;
+          }
+
+          &:last-child {
+            cursor: pointer;
+            color: $color-blue;
+
+            button {
+              border: none;
+              cursor: pointer;
+              color: $color-blue;
+            }
+
+          }
+
+          input {
+
+            padding: $margin-padding-1;
+            border: none;
+            border-bottom: $line-color-gray 1px solid;
+            width: 150px;
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
