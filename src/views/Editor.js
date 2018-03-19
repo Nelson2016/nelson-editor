@@ -99,6 +99,13 @@ class Editor extends React.Component {
         }
     }
 
+    /**
+     * @description 获取/设置编辑器内筒
+     */
+    val(value) {
+        return value === undefined ? this.textArea.innerHTML : this.textArea.innerHTML = value;
+    }
+
     render() {
 
         return <div className={styles["n-editor"]}>
