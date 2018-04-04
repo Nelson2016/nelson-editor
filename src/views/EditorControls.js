@@ -94,6 +94,11 @@ class Editor extends React.Component {
                     </div>
                 </li>
                 <li>
+                    <button type="button" onClick={this.props.execCommand.bind(this, 'formatBlock', '<p>')}>
+                        <i className={fonts["icon-normal"]} data-icon></i>
+                    </button>
+                </li>
+                <li>
                     <button type="button" onClick={this.props.execCommand.bind(this, 'bold')}>
                         <i className={fonts["icon-bold"]} data-icon></i>
                     </button>

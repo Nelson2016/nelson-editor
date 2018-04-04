@@ -19,6 +19,7 @@ gulp.task('index', function () {
         .pipe(babel({
             presets: ['es2015', 'react']
         }))
+        .pipe(replace('./src/asset/style/style.scss', './asset/style/style.css'))
         .pipe(replace('./src/views/Editor', './views/Editor'))
         .pipe(gulp.dest('dist'))
 });
