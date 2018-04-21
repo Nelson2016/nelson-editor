@@ -1,6 +1,6 @@
 # 介绍
     NE是一款简洁的基于react、支持服务端渲染的富文本编辑器
-    在线demo：http://ne.nelsonlee.site
+    在线demo：[NE在线Demo](http://ne.nelsonlee.site "NE在线Demo")
     
     demo中：后端采用koa等；前端采用React+React-Router+Redux+CSS Module等。
     
