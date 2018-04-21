@@ -1,9 +1,19 @@
 import React from 'react';
+import "isomorphic-fetch";
+import promise from 'es6-promise';
 
 import fonts from '../asset/style/fonts.scss';
 import styles from '../asset/style/editor.scss';
 
 class Editor extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        this.listenLocalImageInput();
+    }
 
     /**
      * @description     显示插入标题列表
@@ -29,7 +39,7 @@ class Editor extends React.Component {
     }
 
     /**
-     * @description     插入图片
+     * @description     插入网络图片
      */
     insertNetPicture() {
         const pictureUrl = this.netPicture.value;
@@ -39,6 +49,75 @@ class Editor extends React.Component {
         }
         this.props.execCommand('insertImage', pictureUrl, true);
         this.togglePicture('hide');
+    }
+
+    /**
+     * @description     插入本地图片
+     */
+    insertLocalImage() {
+        const uploadPictureConfig = this.props.uploadPictureConfig;
+        if (!uploadPictureConfig || !uploadPictureConfig.action) {
+            alert('该功能不可用');
+            return;
+        }
+        this.localPictureInput.click();
+    }
+
+    /**
+     * @description 监听选择图片
+     */
+    listenLocalImageInput() {
+        this.localPictureInput.onchange = () => {
+            const uploadPictureConfig = this.props.uploadPictureConfig;
+
+            let filePath = this.getFileUrl(this.localPictureInput.files[0]),
+                formData = new FormData();
+
+            formData.append('data', this.localPictureInput.files[0]);
+
+            fetch(uploadPictureConfig.action, {
+                method: 'POST',
+                credentials: 'same-origin',
+                body: formData
+            }).then((res) => {
+                if (res.status === 200) {
+                    return res.json();
+                } else {
+                    throw new Error('Server Error : ' + res.status);
+                }
+            }).then((res) => {
+                const keys = Object.keys(res);
+                const count = keys.length;
+                let url = res[keys[0]];
+
+                if (uploadPictureConfig.format) {
+                    url = uploadPictureConfig.format(url) || url;
+                }
+
+                if (count > 0) {
+                    this.props.execCommand('insertImage', url, true);
+                } else {
+                    this.props.netPictureFail && this.props.onNetPictureFail()
+                }
+            })
+        }
+    }
+
+    /**
+     * @description     根据文件对象获取本地路径
+     * @param file      文件对象
+     * @returns {*}     本地路径
+     */
+    getFileUrl(file) {
+        let url = null;
+        if (window.createObjectURL !== undefined) {
+            url = window.createObjectURL(file);
+        } else if (window.URL !== undefined) {
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL !== undefined) {
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
     }
 
     /**
@@ -54,11 +133,15 @@ class Editor extends React.Component {
     insertLink() {
         const linkHref = this.linkHref.value;
         if (!linkHref) {
-            alert('请输入图片地址');
+            alert('请输入链接地址');
             return;
         }
-        this.props.execCommand('createLink', linkHref, true);
-        this.togglePicture('hide');
+        if (linkHref.indexOf('http://') < 0) {
+            alert('链接地址输入有误，请包涵http://或https://');
+            return;
+        }
+        this.props.execCommand('insertHTML', '<a href="' + linkHref + '" target="_blank">' + linkHref + '</a>', true);
+        this.toggleLink('hide');
     }
 
     render() {
@@ -167,10 +250,12 @@ class Editor extends React.Component {
                          onMouseLeave={this.togglePicture.bind(this, 'hide')}>
                         <div className={styles['n-editor-controls-picture-local']}>
                             <span>本地图片</span>
-                            <span>点击上传<input type="file"/></span>
+                            <span onClick={this.insertLocalImage.bind(this)}>点击上传<input type="file"
+                                                                                        ref={e => this.localPictureInput = e}/></span>
                         </div>
+
                         <div className={styles['n-editor-controls-picture-net']}>
-                            <span>本地图片</span>
+                            <span>网络图片</span>
                             <span><input type="text" placeholder="请输入图片地址" ref={e => this.netPicture = e}/></span>
                             <span><button type="button" onClick={this.insertNetPicture.bind(this)}>插入图片</button></span>
                         </div>

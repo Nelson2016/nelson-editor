@@ -1,0 +1,148 @@
+@charset "UTF-8";
+html, body {
+  background: #FFFFFF;
+  font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif, "宋体";
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #333333;
+  font-weight: normal; }
+
+h1 {
+  font-size: 22px; }
+
+h2 {
+  font-size: 20px; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  font-size: 12px; }
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block; }
+
+ul,
+ol {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+img {
+  display: block;
+  border: none; }
+
+p,
+td,
+th,
+li,
+a,
+label,
+span {
+  font-size: 12px;
+  color: #333333; }
+
+input,
+button,
+textarea {
+  color: #333333;
+  font-size: 12px;
+  outline: none;
+  box-shadow: none; }
+
+input::placeholder, textarea::placeholder {
+  color: #999999;
+  font-size: 12px; }
+
+tbody {
+  outline: none; }
+
+input[type=search],
+input[type=text],
+input[type=number],
+input[type=tel],
+input[type=password],
+textarea {
+  appearance: none; }
+
+/*Overflow ellipsis*/
+/*Clearfix*/
+/*Top/Bottom line*/
+.editor-container h1, .editor-container h2, .editor-container h3, .editor-container h4, .editor-container h5, .editor-container h6, .editor-container p, .editor-container li, .editor-container a, .editor-container li, .editor-container pre, .editor-container code {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 1.5; }
+
+.editor-container h1 {
+  font-size: 30px; }
+
+.editor-container h2 {
+  font-size: 28px; }
+
+.editor-container h3 {
+  font-size: 26px; }
+
+.editor-container h4 {
+  font-size: 24px; }
+
+.editor-container h5 {
+  font-size: 22px; }
+
+.editor-container h6 {
+  font-size: 20px; }
+
+.editor-container p, .editor-container li, .editor-container a, .editor-container li {
+  font-size: 14px; }
+
+.editor-container blockquote {
+  font-size: 12px;
+  border-left: #108ee9 3px solid;
+  padding: 5px 10px;
+  margin: 5px 0;
+  color: #999999; }
+
+.editor-container ul, .editor-container ol {
+  padding-left: 30px; }
+
+.editor-container ul {
+  list-style-type: circle; }
+
+.editor-container ol {
+  list-style-type: decimal; }
+
+.editor-container a {
+  color: #108ee9; }
+
+.editor-container pre {
+  background: #f7f7f7;
+  border-radius: 5px;
+  padding: 10px; }
+
+.editor-container img {
+  max-width: 100%; }

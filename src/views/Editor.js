@@ -11,6 +11,7 @@ class Editor extends React.Component {
         super(props);
 
         this.state = {
+            debug: !!this.props.debug,
             savedSelection: {start: 0, end: 0}
         }
     }
@@ -103,13 +104,15 @@ class Editor extends React.Component {
      * @description 获取/设置编辑器内筒
      */
     val(value) {
-        return value === undefined ? this.textArea.innerHTML : this.textArea.innerHTML = value;
+        const val = this.textArea.innerHTML;
+        return value === undefined ? val === '<p><br></p>' ? '' : val : this.textArea.innerHTML = value;
     }
 
     render() {
 
         return <div className={styles["n-editor"]}>
-            <EditorControls execCommand={this.execCommand.bind(this)}/>
+            <EditorControls execCommand={this.execCommand.bind(this)}
+                            uploadPictureConfig={this.props.uploadPictureConfig}/>
             <div className={styles["n-editor-text-area"]}
                  contentEditable={true}
                  suppressContentEditableWarning={true}
