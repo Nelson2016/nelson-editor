@@ -1,17 +1,17 @@
 # 介绍
 NE是一款简洁的基于react、支持服务端渲染的富文本编辑器
 
-在线demo：[戳此](http://ne.nelsonlee.site "NE在线Demo")
+在线demo：[戳此](http://ne.nelsonlee.site "nelson-editor在线Demo")
     
 demo中：后端采用koa等；前端采用React+React-Router+Redux+CSS Module等。
     
     
 # 安装
-    npm install ne --save-dev
+    npm install nelson-editor --save-dev
   
 # 使用
 
-    import NEditor from 'ne';
+    import NEditor from 'nelson-editor';
     
     //获取NEditor组件实例
     const Editor = NEditor.Editor;
